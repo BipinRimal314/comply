@@ -1,0 +1,19 @@
+# BSA/AML documents should not contain phrases that suggest
+# incomplete or aspirational compliance.
+extends: existence
+message: "Risky language in BSA/AML document: '%s'. Examiners interpret this as non-compliance."
+level: error
+ignorecase: true
+tokens:
+  - 'when resources permit'
+  - 'budget permitting'
+  - 'if staffing allows'
+  - 'we plan to implement'
+  - 'future enhancement'
+  - 'to be determined'
+  - 'TBD'
+  - 'placeholder'
+  - 'draft'
+  - 'not yet implemented'
+  - 'under development'
+  - 'pending approval'

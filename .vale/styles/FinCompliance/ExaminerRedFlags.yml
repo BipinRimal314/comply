@@ -1,0 +1,28 @@
+# Phrases that are red flags during regulatory examinations.
+# These suggest the institution knows about gaps but hasn't addressed them.
+extends: existence
+message: "Examiner red flag: '%s'. This language suggests known non-compliance."
+level: error
+ignorecase: true
+tokens:
+  - 'we are aware'
+  - 'we acknowledge'
+  - 'we recognize the need'
+  - 'we understand the requirement'
+  - 'working toward compliance'
+  - 'working towards compliance'
+  - 'in the process of'
+  - 'currently implementing'
+  - 'will be addressed in'
+  - 'planned for next'
+  - 'not yet in place'
+  - 'not fully implemented'
+  - 'partially implemented'
+  - 'interim measure'
+  - 'temporary workaround'
+  - 'gap identified'
+  - 'remediation in progress'
+  - 'corrective action pending'
+  - 'exception granted'
+  - 'waiver approved'
+  - 'to be completed by'

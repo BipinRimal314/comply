@@ -1,0 +1,24 @@
+# Compliance review frequencies must be specific.
+# "Regular reviews" is not auditable. "Quarterly reviews" is.
+extends: existence
+message: "Unquantified frequency: '%s'. Specify exact cadence (daily/weekly/monthly/quarterly/annually)."
+level: warning
+ignorecase: true
+tokens:
+  - 'regular reviews'
+  - 'regular basis'
+  - 'regular intervals'
+  - 'routine reviews'
+  - 'routine basis'
+  - 'periodic reviews'
+  - 'periodic basis'
+  - 'periodic intervals'
+  - 'frequent reviews'
+  - 'frequent basis'
+  - 'ongoing reviews'
+  - 'continuous reviews'
+  - 'reviewed regularly'
+  - 'monitored regularly'
+  - 'assessed regularly'
+  - 'updated regularly'
+  - 'tested regularly'

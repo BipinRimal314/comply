@@ -1,0 +1,20 @@
+# Compliance documents must specify exact timeframes.
+# Examiners flag unquantified time commitments.
+extends: existence
+message: "Unspecified timeframe: '%s'. State exact days/hours (e.g., 'within 30 calendar days')."
+level: warning
+ignorecase: true
+tokens:
+  - 'within a reasonable time'
+  - 'in due course'
+  - 'at the earliest opportunity'
+  - 'without undue delay'
+  - 'without unnecessary delay'
+  - 'in a reasonable period'
+  - 'within a reasonable period'
+  - 'as quickly as possible'
+  - 'at the earliest convenience'
+  - 'shortly after'
+  - 'soon after'
+  - 'in the near future'
+  - 'at some point'

@@ -1,0 +1,16 @@
+# Regulatory references should include specific section numbers.
+# Vague citations fail examiner scrutiny.
+extends: existence
+message: "Vague regulatory reference: '%s'. Include specific section/part numbers (e.g., '31 USC 5311', '12 CFR 1020.220')."
+level: warning
+ignorecase: true
+tokens:
+  - 'per federal regulations'
+  - 'per applicable regulations'
+  - 'in accordance with applicable law'
+  - 'per regulatory requirements'
+  - 'as required by law'
+  - 'per relevant regulations'
+  - 'under applicable rules'
+  - 'in compliance with regulations'
+  - 'pursuant to applicable law'

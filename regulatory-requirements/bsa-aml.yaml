@@ -1,0 +1,170 @@
+# BSA/AML Regulatory Requirements Library
+# Machine-readable format for US financial compliance documentation requirements
+# No OSCAL equivalent exists for financial regulations — this is the first.
+#
+# Structure: regulation → section → requirement → document expectations
+# Used by the AI augmentation layer (Phase 3) for gap analysis.
+
+regulation:
+  name: Bank Secrecy Act / Anti-Money Laundering
+  authority: Financial Crimes Enforcement Network (FinCEN)
+  primary_statutes:
+    - citation: "31 USC 5311-5332"
+      name: "Bank Secrecy Act"
+    - citation: "Public Law 107-56"
+      name: "USA PATRIOT Act"
+  implementing_regulations:
+    - citation: "31 CFR Chapter X"
+      name: "FinCEN implementing regulations"
+  examination_manual: "FFIEC BSA/AML Examination Manual"
+
+requirements:
+  program_structure:
+    id: "BSA-001"
+    name: "BSA/AML Compliance Program"
+    citation: "31 CFR 1020.210"
+    severity: critical
+    description: "Financial institutions must establish and maintain a BSA/AML compliance program."
+    document_must_contain:
+      - element: "Five pillars"
+        subelements:
+          - "Internal controls"
+          - "Independent testing"
+          - "Designated BSA compliance officer"
+          - "Training"
+          - "Customer due diligence"
+        citation: "FFIEC BSA/AML Manual, Core Overview"
+
+  customer_identification:
+    id: "BSA-002"
+    name: "Customer Identification Program (CIP)"
+    citation: "31 CFR 1020.220"
+    severity: critical
+    description: "Institutions must implement a CIP to verify the identity of persons opening accounts."
+    document_must_contain:
+      - element: "Identity verification procedures"
+        details: "Documentary and non-documentary methods"
+      - element: "Required information"
+        details: "Name, date of birth, address, identification number"
+      - element: "Recordkeeping requirements"
+        details: "Five years after account closure"
+      - element: "Government list screening"
+        details: "OFAC SDN list, 314(a) requests"
+      - element: "Customer notice"
+        details: "Notice that ID is requested for federal compliance"
+
+  customer_due_diligence:
+    id: "BSA-003"
+    name: "Customer Due Diligence (CDD)"
+    citation: "31 CFR 1010.230"
+    severity: critical
+    description: "Institutions must understand the nature and purpose of customer relationships."
+    document_must_contain:
+      - element: "Beneficial ownership identification"
+        details: "25% ownership threshold for legal entities"
+      - element: "Risk rating methodology"
+        details: "Documented basis for risk determinations"
+      - element: "Ongoing monitoring procedures"
+        details: "Transaction monitoring commensurate with risk"
+      - element: "Enhanced due diligence triggers"
+        details: "High-risk customers, PEPs, foreign correspondents"
+
+  suspicious_activity_reporting:
+    id: "BSA-004"
+    name: "Suspicious Activity Reporting (SAR)"
+    citation: "31 CFR 1020.320"
+    severity: critical
+    description: "Institutions must file SARs for known or suspected criminal activity."
+    document_must_contain:
+      - element: "Filing thresholds"
+        details: "$5,000 for banks; $2,000 for MSBs"
+      - element: "Filing deadline"
+        details: "30 calendar days from detection; 60 if no suspect identified"
+      - element: "Narrative requirements"
+        details: "Who, what, when, where, why, how"
+      - element: "Confidentiality requirements"
+        details: "No disclosure to subject; safe harbor provisions"
+      - element: "Supporting documentation retention"
+        details: "Five years from filing date"
+      - element: "FinCEN filing"
+        details: "Filed through FinCEN BSA E-Filing System"
+
+  currency_transaction_reporting:
+    id: "BSA-005"
+    name: "Currency Transaction Reporting (CTR)"
+    citation: "31 CFR 1010.310"
+    severity: critical
+    description: "Institutions must file CTRs for currency transactions exceeding $10,000."
+    document_must_contain:
+      - element: "Filing threshold"
+        details: "$10,000 in currency per transaction or aggregated per business day"
+      - element: "Aggregation rules"
+        details: "Multiple transactions by or on behalf of same person"
+      - element: "Filing deadline"
+        details: "15 calendar days"
+      - element: "Exemption procedures"
+        details: "Eligible customers per 31 CFR 1020.315"
+      - element: "Structuring monitoring"
+        details: "Detection of transactions designed to evade CTR threshold"
+
+  ofac_compliance:
+    id: "BSA-006"
+    name: "OFAC Sanctions Compliance"
+    citation: "31 CFR Chapter V"
+    severity: critical
+    description: "Institutions must screen for and block transactions involving sanctioned parties."
+    document_must_contain:
+      - element: "SDN list screening"
+        details: "All customers, transactions, counterparties"
+      - element: "Blocking and rejecting procedures"
+        details: "Blocked persons and prohibited countries/regions"
+      - element: "Match handling procedures"
+        details: "True positive and false positive resolution"
+      - element: "OFAC reporting"
+        details: "10 business days for blocked/rejected transactions"
+
+  training:
+    id: "BSA-007"
+    name: "BSA/AML Training Program"
+    citation: "FFIEC BSA/AML Manual"
+    severity: high
+    description: "All employees must receive BSA/AML training appropriate to their roles."
+    document_must_contain:
+      - element: "New employee training timeline"
+        details: "Specified number of days from hire"
+      - element: "Annual training requirement"
+        details: "All staff, documented completion"
+      - element: "Board of Directors training"
+        details: "Annual briefing on program status"
+      - element: "Role-based training"
+        details: "Specialized content by job function"
+      - element: "Training record retention"
+        details: "Five years minimum"
+
+  independent_testing:
+    id: "BSA-008"
+    name: "Independent Testing / Audit"
+    citation: "FFIEC BSA/AML Manual"
+    severity: high
+    description: "The BSA/AML program must be independently tested at least annually."
+    document_must_contain:
+      - element: "Frequency"
+        details: "At least annually"
+      - element: "Independence requirements"
+        details: "Tester must not be involved in BSA/AML operations"
+      - element: "Scope"
+        details: "Overall program adequacy, transaction testing, filing review"
+      - element: "Reporting"
+        details: "Results reported to Board of Directors"
+
+  recordkeeping:
+    id: "BSA-009"
+    name: "BSA/AML Recordkeeping"
+    citation: "31 CFR 1010.430"
+    severity: high
+    description: "BSA-related records must be retained for specified periods."
+    document_must_contain:
+      - element: "Retention periods by record type"
+        details: "SARs: 5 years from filing; CTRs: 5 years from filing; CIP: 5 years after closure"
+      - element: "Record storage and accessibility"
+        details: "Available for examination upon request"

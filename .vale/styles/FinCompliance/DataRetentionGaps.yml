@@ -1,0 +1,16 @@
+# Retention periods must be specific numbers, not vague references.
+extends: existence
+message: "Vague retention period: '%s'. Specify exact retention (e.g., 'five years from filing date')."
+level: warning
+ignorecase: true
+tokens:
+  - 'retained as required'
+  - 'retained per policy'
+  - 'retained as appropriate'
+  - 'kept on file'
+  - 'maintained on file'
+  - 'retained indefinitely'
+  - 'kept for the required period'
+  - 'retained for the appropriate period'
+  - 'retained per regulations'
+  - 'standard retention period'

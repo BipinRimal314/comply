@@ -1,0 +1,9 @@
+# Compliance documents should not contain actual sensitive data.
+# Sample SSNs, account numbers, or real names should use placeholders.
+extends: existence
+message: "Possible sensitive data in document: '%s'. Use placeholders like [REDACTED] or XXX-XX-XXXX."
+level: error
+raw:
+  - '\b\d{3}-\d{2}-\d{4}\b'
+  - '\b\d{9}\b'
+  - '\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b'
