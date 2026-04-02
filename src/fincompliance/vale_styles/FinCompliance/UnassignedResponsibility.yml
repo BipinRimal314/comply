@@ -1,0 +1,24 @@
+# Compliance tasks must have assigned owners.
+# "The institution will..." doesn't tell the examiner WHO is responsible.
+extends: existence
+message: "Unassigned responsibility: '%s'. Name the role responsible (e.g., 'The BSA Officer shall...')."
+level: warning
+ignorecase: true
+tokens:
+  - 'the institution will'
+  - 'the institution shall'
+  - 'the company will'
+  - 'the company shall'
+  - 'the organization will'
+  - 'the organization shall'
+  - 'the credit union will'
+  - 'the credit union shall'
+  - 'the bank will'
+  - 'the bank shall'
+  - 'management will'
+  - 'management shall'
+  - 'staff will'
+  - 'staff shall'
+  - 'employees will'
+  - 'we will'
+  - 'we shall'

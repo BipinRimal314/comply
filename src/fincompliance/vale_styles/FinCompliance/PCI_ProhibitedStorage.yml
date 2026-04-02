@@ -1,0 +1,29 @@
+# PCI-DSS prohibits storage of sensitive authentication data after authorization.
+# Documentation should not describe storing these elements.
+# Per PCI-DSS v4.0 Requirement 3.3.
+extends: existence
+message: "PCI-DSS violation risk: '%s'. Sensitive authentication data must not be stored after authorization (Req 3.3)."
+level: error
+ignorecase: true
+tokens:
+  - 'store CVV'
+  - 'store CVC'
+  - 'store CVV2'
+  - 'retain CVV'
+  - 'retain CVC'
+  - 'save CVV'
+  - 'store PIN'
+  - 'retain PIN'
+  - 'save PIN'
+  - 'store full track data'
+  - 'retain track data'
+  - 'store magnetic stripe'
+  - 'retain magnetic stripe'
+  - 'store full PAN'
+  - 'unmasked PAN'
+  - 'unencrypted PAN'
+  - 'plaintext PAN'
+  - 'store card number in'
+  - 'log card number'
+  - 'log PAN'
+  - 'log credit card'

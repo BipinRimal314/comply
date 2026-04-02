@@ -32,7 +32,7 @@ class Finding:
 
 def load_requirements(regulation: str) -> dict:
     """Load regulatory requirements from YAML."""
-    req_dir = Path(__file__).parent.parent / "regulatory-requirements"
+    req_dir = Path(__file__).parent / "regulatory-requirements"
     req_file = req_dir / f"{regulation}.yaml"
     if not req_file.exists():
         return {}
@@ -240,9 +240,26 @@ def check_section_structure(content: str) -> list[Finding]:
     return findings
 
 
+def _get_vale_config() -> Path:
+    """Find the Vale config, checking package directory then project root."""
+    # Check if running from installed package
+    pkg_config = Path(__file__).parent / ".vale.ini"
+    if pkg_config.exists():
+        return pkg_config
+    # Check project root (development mode)
+    project_config = Path(__file__).parent.parent.parent / ".vale.ini"
+    if project_config.exists():
+        return project_config
+    # Fallback: current directory
+    cwd_config = Path.cwd() / ".vale.ini"
+    if cwd_config.exists():
+        return cwd_config
+    return project_config  # Will fail gracefully if Vale can't find it
+
+
 def run_vale(file_path: str) -> dict:
     """Run Vale and return JSON results."""
-    config = Path(__file__).parent.parent / ".vale.ini"
+    config = _get_vale_config()
     result = subprocess.run(
         ["vale", f"--config={config}", "--output=JSON", file_path],
         capture_output=True,

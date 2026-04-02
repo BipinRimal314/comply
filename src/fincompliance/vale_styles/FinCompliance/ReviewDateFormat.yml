@@ -1,0 +1,7 @@
+# Review dates must use consistent format.
+# Inconsistent dates are an examiner finding.
+extends: existence
+message: "Date format appears inconsistent. Use YYYY-MM-DD or Month DD, YYYY consistently."
+level: warning
+raw:
+  - '\d{1,2}/\d{1,2}/\d{2}(?!\d)'

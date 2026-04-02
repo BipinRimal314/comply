@@ -1,1 +1,6 @@
 tests/real-world/
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.pyc

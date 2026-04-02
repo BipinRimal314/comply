@@ -1,0 +1,22 @@
+# Compliance documents should use mandatory language ("shall", "must")
+# rather than aspirational language ("should", "may", "will try").
+# Examiners interpret weak language as optional compliance.
+extends: existence
+message: "Weak commitment language: '%s'. Consider 'shall' or 'must' for mandatory requirements."
+level: warning
+ignorecase: true
+tokens:
+  - 'will endeavor'
+  - 'will strive'
+  - 'will attempt'
+  - 'may consider'
+  - 'should consider'
+  - 'will try to'
+  - 'aims to'
+  - 'intends to'
+  - 'hopes to'
+  - 'plans to consider'
+  - 'when practicable'
+  - 'when feasible'
+  - 'to the extent possible'
+  - 'where practical'

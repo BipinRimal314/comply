@@ -1,0 +1,17 @@
+# Credit union specific compliance language checks.
+# NCUA examinations look for credit union-appropriate terminology.
+extends: substitution
+message: "Credit union terminology: Use '%s' instead of '%s' in credit union documents."
+level: suggestion
+ignorecase: true
+swap:
+  "customers": "members"
+  "customer": "member"
+  "depositors": "members"
+  "account holders": "members"
+  "bank": "credit union"
+  "banking": "credit union services"
+  "profit": "net income"
+  "profits": "net income"
+  "stockholders": "members"
+  "shareholders": "members"

@@ -1,0 +1,24 @@
+# Compliance documents must use precise regulatory language.
+# Vague or informal terms create legal ambiguity during examinations.
+extends: substitution
+message: "Use '%s' instead of '%s' for regulatory precision."
+level: warning
+ignorecase: true
+swap:
+  "as soon as possible": "within [X] business days"
+  "ASAP": "within [X] business days"
+  "in a timely manner": "within [X] business days"
+  "promptly": "within [X] business days"
+  "reasonable time": "within [X] business days"
+  "regularly": "at least [quarterly/monthly/annually]"
+  "periodically": "at least [quarterly/monthly/annually]"
+  "from time to time": "at least [quarterly/monthly/annually]"
+  "as needed": "when [specific trigger condition]"
+  "if necessary": "when [specific trigger condition]"
+  "as appropriate": "when [specific trigger condition]"
+  "best efforts": "commercially reasonable efforts"
+  "will try to": "shall"
+  "will attempt to": "shall"
+  "customer info": "customer information"
+  "govt": "government"
+  "approx": "approximately"

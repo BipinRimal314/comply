@@ -1,0 +1,24 @@
+# Compliance policies should use active voice to assign clear responsibility.
+# "Accounts will be reviewed" (by whom?) vs "The BSA Officer shall review accounts."
+extends: existence
+message: "Passive voice detected: '%s'. Assign clear responsibility with active voice (who does what)."
+level: suggestion
+ignorecase: true
+tokens:
+  - 'will be reviewed'
+  - 'will be conducted'
+  - 'will be performed'
+  - 'will be reported'
+  - 'will be filed'
+  - 'will be maintained'
+  - 'will be monitored'
+  - 'will be assessed'
+  - 'will be evaluated'
+  - 'will be updated'
+  - 'is to be reviewed'
+  - 'are to be conducted'
+  - 'should be reviewed'
+  - 'should be conducted'
+  - 'should be reported'
+  - 'must be reviewed'
+  - 'must be conducted'

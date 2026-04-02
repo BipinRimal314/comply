@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fincompliance"
+version = "0.1.0"
+description = "Financial compliance documentation linter. Vale rules + AI for BSA/AML, SOX, PCI-DSS, GLBA, NCUA."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Bipin Rimal", email = "bipinrimal314@gmail.com" },
+]
+keywords = [
+    "compliance",
+    "fintech",
+    "credit-union",
+    "BSA",
+    "AML",
+    "SOX",
+    "PCI-DSS",
+    "documentation",
+    "linter",
+    "vale",
+    "regulatory",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+fincompliance = "fincompliance.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/BipinRimal314/comply"
+Repository = "https://github.com/BipinRimal314/comply"
+Issues = "https://github.com/BipinRimal314/comply/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fincompliance"]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"src/fincompliance/vale_styles" = "share/fincompliance/vale_styles"
+"src/fincompliance/regulatory-requirements" = "share/fincompliance/regulatory-requirements"
