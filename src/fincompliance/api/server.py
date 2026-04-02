@@ -60,6 +60,68 @@ async def health():
     return {"status": "healthy", "timestamp": datetime.now(timezone.utc).isoformat()}
 
 
+@app.get("/catalog")
+async def get_catalog():
+    """Get the full FinCompliance rule catalog in OSCAL-inspired format."""
+    from fincompliance.analysis.oscal import generate_oscal_catalog
+    return generate_oscal_catalog()
+
+
+@app.post("/analyze/oscal")
+async def analyze_oscal(
+    file: UploadFile = File(...),
+    regulation: str = Query("bsa-aml"),
+    institution_name: str = Query("Institution"),
+):
+    """
+    Analyze a document and return results in OSCAL-inspired format.
+    Compatible with enterprise GRC platform import pipelines.
+    """
+    from fincompliance.analysis.oscal import generate_oscal_assessment
+
+    suffix = Path(file.filename or "document.md").suffix.lower()
+    temp_dir = Path(tempfile.mkdtemp())
+    temp_path = temp_dir / f"upload_{uuid.uuid4().hex[:8]}{suffix}"
+    content = await file.read()
+    temp_path.write_bytes(content)
+
+    try:
+        result = engine.analyze(str(temp_path), regulation=regulation)
+    finally:
+        temp_path.unlink(missing_ok=True)
+        temp_dir.rmdir()
+
+    return generate_oscal_assessment(result, institution_name, file.filename or "document")
+
+
+@app.get("/tracking/changes")
+async def check_regulatory_changes(
+    days_back: int = Query(30, description="Number of days to look back"),
+):
+    """
+    Check the Federal Register for recent regulatory changes
+    affecting financial compliance documentation.
+    """
+    from fincompliance.tracking.federal_register import FederalRegisterTracker
+    tracker = FederalRegisterTracker()
+    changes = tracker.fetch_recent_changes(days_back=days_back)
+    return {
+        "period_days": days_back,
+        "changes_found": len(changes),
+        "changes": [
+            {
+                "title": c.title,
+                "date": c.publication_date,
+                "type": c.action_type,
+                "agency": c.agency,
+                "cfr_references": c.cfr_references,
+                "url": c.url,
+            }
+            for c in changes
+        ],
+    }
+
+
 @app.get("/rules")
 async def list_rules():
     """List all available linting rules with metadata."""

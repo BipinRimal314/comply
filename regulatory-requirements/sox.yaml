@@ -1,0 +1,93 @@
+# Sarbanes-Oxley Act — Documentation Requirements
+# Primarily Section 302 (CEO/CFO Certifications) and Section 404 (ICFR)
+# Governed by PCAOB Auditing Standards (AS 2201, AS 1215)
+
+regulation:
+  name: Sarbanes-Oxley Act
+  authority: Securities and Exchange Commission (SEC) / PCAOB
+  primary_statutes:
+    - citation: "SOX Section 302"
+      name: "Corporate Responsibility for Financial Reports"
+    - citation: "SOX Section 404"
+      name: "Management Assessment of Internal Controls"
+    - citation: "SOX Section 802"
+      name: "Criminal Penalties for Document Destruction"
+  auditing_standards:
+    - citation: "PCAOB AS 2201"
+      name: "Audit of Internal Control Over Financial Reporting"
+    - citation: "PCAOB AS 1215"
+      name: "Audit Documentation"
+
+requirements:
+  management_report:
+    id: "SOX-001"
+    name: "Management Annual Report on ICFR"
+    citation: "SOX Section 404(a); AS 2201.85"
+    severity: critical
+    document_must_contain:
+      - element: "Report title"
+        details: "'Report of Independent Registered Public Accounting Firm' — exact title required"
+      - element: "Management responsibility statement"
+        details: "Explicit acknowledgment of management's responsibility for establishing and maintaining adequate ICFR"
+      - element: "Control framework identification"
+        details: "Must identify specific framework used (e.g., COSO Internal Control — Integrated Framework 2013)"
+      - element: "Effectiveness assessment"
+        details: "Clear assertion on whether ICFR was effective as of fiscal year-end date"
+      - element: "Fiscal year-end date"
+        details: "Specific date of the assessment"
+
+  material_weakness_documentation:
+    id: "SOX-002"
+    name: "Material Weakness Indicators"
+    citation: "AS 2201.69-70"
+    severity: critical
+    document_must_contain:
+      - element: "Strong indicator triggers"
+        details: "Must document and escalate: fraud by senior management, restatement of financial statements, ineffective audit committee oversight, material misstatement in current period"
+      - element: "Audit committee notification"
+        details: "Material weaknesses must be communicated to audit committee in writing"
+      - element: "Remediation plan"
+        details: "Timeline and specific actions for remediating each identified weakness"
+
+  documentation_retention:
+    id: "SOX-003"
+    name: "Audit Documentation Retention"
+    citation: "AS 1215; SOX Section 802"
+    severity: critical
+    document_must_contain:
+      - element: "Completion deadline"
+        details: "14 days following the report release date (changed from 45 days)"
+      - element: "Retention period"
+        details: "7 years from report release date"
+      - element: "Document destruction prohibition"
+        details: "Criminal penalties for destroying audit documentation (up to 20 years imprisonment)"
+
+  control_testing:
+    id: "SOX-004"
+    name: "Internal Control Testing Documentation"
+    citation: "AS 2201.39-52"
+    severity: high
+    document_must_contain:
+      - element: "Testing methodology"
+        details: "Inquiry, observation, inspection, reperformance — at least two methods"
+      - element: "Sample sizes"
+        details: "Documented rationale for sample selection and size"
+      - element: "Exception handling"
+        details: "How identified exceptions are evaluated and escalated"
+      - element: "Timing of tests"
+        details: "Tests must be performed at or near the assessment date"
+
+  entity_level_controls:
+    id: "SOX-005"
+    name: "Entity-Level Controls"
+    citation: "AS 2201.22-27"
+    severity: high
+    document_must_contain:
+      - element: "Control environment"
+        details: "Tone at the top, organizational structure, authority assignment"
+      - element: "Risk assessment process"
+        details: "How the entity identifies and responds to financial reporting risks"
+      - element: "Information and communication"
+        details: "How significant accounting information is communicated"
+      - element: "Monitoring activities"
+        details: "How management monitors the effectiveness of internal controls"

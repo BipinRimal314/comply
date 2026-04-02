@@ -1,0 +1,68 @@
+# UDAAP — Unfair, Deceptive, or Abusive Acts or Practices
+# Dodd-Frank Act Section 1031 (12 USC 5531)
+# Enforced by CFPB
+# Applies to ALL consumer-facing financial documents
+
+regulation:
+  name: Unfair, Deceptive, or Abusive Acts or Practices
+  authority: Consumer Financial Protection Bureau (CFPB)
+  primary_statutes:
+    - citation: "12 USC 5531"
+      name: "Dodd-Frank Act Section 1031"
+    - citation: "12 USC 5536"
+      name: "Dodd-Frank Act Section 1036 (Prohibited Acts)"
+  guidance:
+    - citation: "CFPB UDAAP Procedures (Sept 2023)"
+      name: "Examination Procedures for UDAAP"
+    - citation: "CFPB Policy Statement on Abusiveness"
+      name: "Guidance on Abusive Acts or Practices"
+
+requirements:
+  unfairness_standard:
+    id: "UDAAP-001"
+    name: "Unfairness Standard"
+    citation: "12 USC 5531(c)"
+    severity: critical
+    description: "An act is unfair if it causes substantial injury not reasonably avoidable by consumers and not outweighed by countervailing benefits."
+    document_red_flags:
+      - "Fees triggered by conditions consumers cannot control"
+      - "Terms that lock consumers into unfavorable arrangements"
+      - "Practices that exploit consumer confusion"
+      - "Charging for services not requested or authorized"
+
+  deception_standard:
+    id: "UDAAP-002"
+    name: "Deception Standard"
+    citation: "12 USC 5531(a)"
+    severity: critical
+    description: "A representation or omission is deceptive if it is likely to mislead a reasonable consumer and is material."
+    document_red_flags:
+      - "Imprecise conditional statements (may be larger, subject to change)"
+      - "Material omissions in disclosures"
+      - "Misleading use of the word 'free'"
+      - "Absolute temporal claims (instant, immediate) without qualification"
+      - "Fine print contradicting prominent claims"
+
+  abusiveness_standard:
+    id: "UDAAP-003"
+    name: "Abusiveness Standard"
+    citation: "12 USC 5531(d)"
+    severity: critical
+    description: "An act is abusive if it materially interferes with consumer understanding or takes unreasonable advantage of consumer reliance."
+    document_red_flags:
+      - "Buried disclosures in fine print or complex sentence structures"
+      - "Language requiring legal expertise to understand"
+      - "Excessive subordinate clauses that obscure meaning"
+      - "Flesch-Kincaid reading level above 12th grade for consumer documents"
+      - "Key terms defined only by reference to other documents"
+
+  readability_requirement:
+    id: "UDAAP-004"
+    name: "Consumer Document Readability"
+    citation: "CFPB Policy Statement on Abusiveness"
+    severity: high
+    description: "Consumer-facing documents must be comprehensible to a reasonable consumer."
+    thresholds:
+      flesch_kincaid_max_grade: 12
+      max_sentence_length_words: 40
+      max_subordinate_clauses: 3

@@ -1,0 +1,83 @@
+# Gramm-Leach-Bliley Act (GLBA) — Documentation Requirements
+# Privacy of Consumer Financial Information Rule (16 CFR Part 313)
+# Safeguards Rule (16 CFR Part 314)
+# Enforced by FTC, OCC, FDIC, NCUA, SEC depending on institution type
+
+regulation:
+  name: Gramm-Leach-Bliley Act
+  authority: Federal Trade Commission / Federal Banking Agencies
+  primary_statutes:
+    - citation: "15 USC 6801-6809"
+      name: "Gramm-Leach-Bliley Act, Title V"
+  implementing_regulations:
+    - citation: "16 CFR Part 313"
+      name: "Privacy of Consumer Financial Information (Regulation S-P)"
+    - citation: "16 CFR Part 314"
+      name: "Standards for Safeguarding Customer Information (Safeguards Rule)"
+
+requirements:
+  privacy_notice:
+    id: "GLBA-001"
+    name: "Privacy Notice Content Requirements"
+    citation: "16 CFR 313.6"
+    severity: critical
+    document_must_contain:
+      - element: "Categories of NPI collected"
+        details: "What types of nonpublic personal information the institution collects"
+      - element: "Categories of NPI disclosed"
+        details: "What types of information are shared and under what circumstances"
+      - element: "Categories of affiliates and third parties"
+        details: "Who receives shared information"
+      - element: "Protection practices"
+        details: "How the institution protects the confidentiality and security of NPI"
+      - element: "Opt-out notice"
+        details: "Clear description of consumer's right to opt out of information sharing"
+      - element: "Opt-out mechanism"
+        details: "Reasonable means to exercise opt-out (toll-free number or web portal)"
+
+  safeguards_rule:
+    id: "GLBA-002"
+    name: "Safeguards Rule Information Security Program"
+    citation: "16 CFR Part 314"
+    severity: critical
+    document_must_contain:
+      - element: "Qualified individual"
+        details: "Designated person responsible for overseeing the information security program"
+      - element: "Risk assessment"
+        details: "Written risk assessment identifying reasonably foreseeable risks"
+      - element: "Safeguards implementation"
+        details: "Access controls, encryption, MFA, data retention, change management"
+      - element: "Service provider oversight"
+        details: "Written contracts requiring safeguards, periodic assessment"
+      - element: "Incident response plan"
+        details: "Documented plan for responding to security events"
+      - element: "Regular testing"
+        details: "Continuous monitoring or annual penetration testing and semi-annual vulnerability assessments"
+
+  breach_notification:
+    id: "GLBA-003"
+    name: "Safeguards Rule Breach Notification"
+    citation: "16 CFR 314.4(h); FTC Safeguards Rule Amendment May 2024"
+    severity: critical
+    document_must_contain:
+      - element: "FTC notification timeline"
+        details: "Notify FTC within 30 days of discovery for breaches affecting 500+ consumers"
+      - element: "Consumer notification"
+        details: "Notify affected consumers as soon as possible after discovery"
+      - element: "Notification content"
+        details: "Description of the event, types of information involved, contact information"
+      - element: "500-consumer threshold"
+        details: "Explicit trigger: unencrypted information of 500 or more consumers"
+
+  annual_notice:
+    id: "GLBA-004"
+    name: "Annual Privacy Notice"
+    citation: "16 CFR 313.5"
+    severity: high
+    document_must_contain:
+      - element: "Annual delivery requirement"
+        details: "Privacy notice provided to customers at least once every 12 months"
+      - element: "Delivery method"
+        details: "Written or electronic delivery with documented receipt"
+      - element: "Content consistency"
+        details: "Annual notice must reflect current information sharing practices"

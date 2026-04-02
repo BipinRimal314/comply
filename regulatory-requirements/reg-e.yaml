@@ -1,0 +1,62 @@
+# Regulation E — Electronic Fund Transfers (12 CFR 1005)
+# Implementing the Electronic Fund Transfer Act (15 USC 1693)
+# Enforced by CFPB
+
+regulation:
+  name: Regulation E (Electronic Fund Transfers)
+  authority: Consumer Financial Protection Bureau (CFPB)
+  primary_statutes:
+    - citation: "15 USC 1693"
+      name: "Electronic Fund Transfer Act"
+  implementing_regulations:
+    - citation: "12 CFR 1005"
+      name: "Regulation E"
+
+requirements:
+  initial_disclosures:
+    id: "REGE-001"
+    name: "Initial Disclosures (12 CFR 1005.7)"
+    citation: "12 CFR 1005.7"
+    severity: critical
+    description: "Institutions must provide initial disclosures when a consumer contracts for EFT services."
+    document_must_contain:
+      - element: "Consumer liability"
+        details: "Conditions under which consumer may be liable for unauthorized transfers"
+      - element: "Contact information"
+        details: "Telephone number and address for reporting unauthorized transfers"
+      - element: "Business days definition"
+        details: "Institution's definition of business days"
+      - element: "Transfer types and limitations"
+        details: "Types of EFTs consumer can make, any limitations"
+      - element: "Fee schedule"
+        details: "All fees for EFT services"
+      - element: "Documentation receipts"
+        details: "Consumer's right to receipts for transactions"
+      - element: "Stop payment procedures"
+        details: "How to stop payment on preauthorized transfers"
+      - element: "Institution liability"
+        details: "Institution's liability for failure to make/stop transfers"
+      - element: "Confidentiality"
+        details: "Circumstances under which institution discloses account information"
+      - element: "Error resolution procedures"
+        details: "Summary of consumer's right to dispute errors"
+      - element: "ATM fees"
+        details: "Notice of fees imposed by other institutions at ATMs"
+
+  error_resolution:
+    id: "REGE-002"
+    name: "Error Resolution Procedures (12 CFR 1005.11)"
+    citation: "12 CFR 1005.11"
+    severity: critical
+    description: "Institutions must investigate errors within specific timeframes."
+    document_must_contain:
+      - element: "10 business day investigation period"
+        details: "Must complete investigation within 10 business days (20 for new accounts)"
+      - element: "Provisional credit"
+        details: "Must provide provisional credit within 10 business days if investigation not complete"
+      - element: "45 calendar day resolution"
+        details: "Must resolve within 45 calendar days (90 days for POS, foreign, new account)"
+      - element: "Written results notification"
+        details: "Must notify consumer of investigation results within 3 business days of completion"
+      - element: "No illegal preconditions"
+        details: "Cannot require police report, notarized affidavit, or in-person visit as precondition"

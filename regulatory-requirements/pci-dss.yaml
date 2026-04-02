@@ -1,0 +1,143 @@
+# PCI-DSS v4.0.1 — Documentation Requirements
+# 12 core requirements with specific documentation expectations
+# Effective March 2024, replacing v3.2.1
+
+regulation:
+  name: Payment Card Industry Data Security Standard
+  authority: PCI Security Standards Council
+  version: "4.0.1"
+  effective_date: "2024-03-31"
+  primary_standard:
+    - citation: "PCI-DSS v4.0.1"
+      name: "Payment Card Industry Data Security Standard"
+  documentation_types:
+    - "Information Security Policy"
+    - "Network Diagrams (topology and data flow)"
+    - "Risk Assessment"
+    - "Incident Response Plan"
+    - "Change Management Procedures"
+    - "Access Control Policies"
+    - "Encryption Key Management Procedures"
+    - "Vulnerability Management Program"
+    - "Security Awareness Training Records"
+
+requirements:
+  req1_network_security:
+    id: "PCI-001"
+    name: "Requirement 1: Network Security Controls"
+    citation: "PCI-DSS v4.0.1 Req 1"
+    severity: critical
+    document_must_contain:
+      - element: "Network topology diagram"
+        details: "Current diagram showing all connections to/from the CDE"
+      - element: "Data flow diagram"
+        details: "Diagram showing all cardholder data flows across systems"
+      - element: "Segmentation documentation"
+        details: "If segmentation used, documentation of how CDE is isolated"
+      - element: "Firewall/NSC rules review"
+        details: "Documented review of all rules at least every 6 months"
+
+  req2_secure_config:
+    id: "PCI-002"
+    name: "Requirement 2: Secure Configurations"
+    citation: "PCI-DSS v4.0.1 Req 2"
+    severity: high
+    document_must_contain:
+      - element: "Hardening standards"
+        details: "Configuration standards for all system components"
+      - element: "Default credential change"
+        details: "Procedures for changing vendor-supplied defaults before deployment"
+      - element: "System inventory"
+        details: "Accurate inventory of all in-scope system components"
+
+  req3_protect_stored_data:
+    id: "PCI-003"
+    name: "Requirement 3: Protect Stored Account Data"
+    citation: "PCI-DSS v4.0.1 Req 3"
+    severity: critical
+    document_must_contain:
+      - element: "Data retention policy"
+        details: "Defined retention periods and disposal procedures for cardholder data"
+      - element: "PAN masking rules"
+        details: "Maximum of first 6 and last 4 digits displayed"
+      - element: "Encryption algorithms"
+        details: "Strong cryptography (AES-256 minimum for data at rest)"
+      - element: "Key management procedures"
+        details: "Key generation, distribution, storage, rotation, and destruction"
+      - element: "Prohibited storage"
+        details: "Explicit prohibition of CVV/CVC, PIN, full track data after authorization"
+
+  req4_cryptography:
+    id: "PCI-004"
+    name: "Requirement 4: Cryptography During Transmission"
+    citation: "PCI-DSS v4.0.1 Req 4"
+    severity: critical
+    document_must_contain:
+      - element: "Transmission encryption"
+        details: "TLS 1.2 or higher for all cardholder data transmission over open networks"
+      - element: "Certificate management"
+        details: "Procedures for certificate lifecycle management"
+      - element: "Deprecated protocol prohibition"
+        details: "Explicit prohibition of SSL, TLS 1.0, TLS 1.1"
+
+  req8_authentication:
+    id: "PCI-008"
+    name: "Requirement 8: Identify and Authenticate Access"
+    citation: "PCI-DSS v4.0.1 Req 8"
+    severity: critical
+    document_must_contain:
+      - element: "MFA requirement"
+        details: "Multi-factor authentication for all access to the CDE"
+      - element: "Password policy"
+        details: "Minimum 12 characters (changed from 7 in v3.2.1)"
+      - element: "Account lockout"
+        details: "Lock account after no more than 10 invalid login attempts"
+      - element: "Session timeout"
+        details: "Idle session timeout after 15 minutes of inactivity"
+
+  req10_logging:
+    id: "PCI-010"
+    name: "Requirement 10: Log and Monitor"
+    citation: "PCI-DSS v4.0.1 Req 10"
+    severity: critical
+    document_must_contain:
+      - element: "Log retention"
+        details: "At least 12 months, with at least 3 months immediately available"
+      - element: "Automated log review"
+        details: "Automated mechanisms for anomaly detection"
+      - element: "Time synchronization"
+        details: "All system clocks synchronized via NTP"
+      - element: "Audit trail protection"
+        details: "Logs cannot be altered by unauthorized users"
+
+  req11_testing:
+    id: "PCI-011"
+    name: "Requirement 11: Test Security Regularly"
+    citation: "PCI-DSS v4.0.1 Req 11"
+    severity: high
+    document_must_contain:
+      - element: "Quarterly external scans"
+        details: "By an Approved Scanning Vendor (ASV)"
+      - element: "Annual penetration testing"
+        details: "Internal and external penetration tests at least annually"
+      - element: "Vulnerability management"
+        details: "Critical/high patches within defined timeframe (risk-based per v4.0)"
+      - element: "Targeted Risk Analysis"
+        details: "v4.0 requires TRA methodology for customized approach"
+
+  req12_policies:
+    id: "PCI-012"
+    name: "Requirement 12: Organizational Policies"
+    citation: "PCI-DSS v4.0.1 Req 12"
+    severity: high
+    document_must_contain:
+      - element: "Information security policy"
+        details: "Annual review and update"
+      - element: "Incident response plan"
+        details: "Documented, tested, includes notification procedures"
+      - element: "Security awareness program"
+        details: "Annual training for all personnel"
+      - element: "Vendor management"
+        details: "Written agreements with service providers, annual monitoring"
+      - element: "Targeted Risk Analysis methodology"
+        details: "New v4.0 requirement for customized approach assessments"
