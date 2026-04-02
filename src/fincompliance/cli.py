@@ -15,10 +15,41 @@ import argparse
 import json
 import subprocess
 import sys
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
 import yaml
+
+
+def convert_to_markdown(file_path: str) -> tuple[str, Path]:
+    """Convert PDF/Word/HTML to Markdown using MarkItDown. Returns (content, temp_md_path)."""
+    path = Path(file_path)
+    suffix = path.suffix.lower()
+
+    if suffix in (".md", ".txt"):
+        return path.read_text(), path
+
+    try:
+        from markitdown import MarkItDown
+    except ImportError:
+        print(
+            "Error: markitdown is required for PDF/Word conversion.\n"
+            "Install it: pip install markitdown",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    md = MarkItDown()
+    result = md.convert(str(path))
+    content = result.text_content
+
+    # Write to temp file for Vale to process
+    temp_dir = Path(tempfile.mkdtemp())
+    temp_path = temp_dir / f"{path.stem}.md"
+    temp_path.write_text(content)
+
+    return content, temp_path
 
 
 @dataclass(frozen=True)
@@ -288,7 +319,16 @@ def analyze_document(
 ) -> tuple[list[Finding], dict]:
     """Run full analysis: Vale linting + document-level checks."""
     path = Path(file_path)
-    content = path.read_text()
+    suffix = path.suffix.lower()
+
+    # Convert non-Markdown formats
+    if suffix in (".pdf", ".docx", ".doc", ".html", ".htm", ".rtf"):
+        print(f"  Converting {suffix} to Markdown...", file=sys.stderr)
+        content, md_path = convert_to_markdown(file_path)
+        vale_target = str(md_path)
+    else:
+        content = path.read_text()
+        vale_target = file_path
 
     doc_findings: list[Finding] = []
 
@@ -304,7 +344,7 @@ def analyze_document(
         doc_findings.extend(check_bsa_cip(content))
 
     # Vale linting
-    vale_results = run_vale(file_path)
+    vale_results = run_vale(vale_target)
 
     return doc_findings, vale_results
 
@@ -370,9 +410,13 @@ def print_results(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Comply — Financial Compliance Documentation Linter",
+        description="FinCompliance — Financial Compliance Documentation Linter",
+        epilog="Supports: .md, .txt, .pdf, .docx, .doc, .html, .rtf",
     )
-    parser.add_argument("file", help="Path to compliance document (Markdown)")
+    parser.add_argument(
+        "file",
+        help="Path to compliance document (Markdown, PDF, Word, HTML)",
+    )
     parser.add_argument(
         "--regulation",
         default="bsa-aml",
@@ -386,6 +430,11 @@ def main():
         choices=["text", "json"],
         help="Output format (default: text)",
     )
+    parser.add_argument(
+        "--report",
+        metavar="NAME",
+        help="Generate HTML gap report. NAME = institution name for the report header.",
+    )
     args = parser.parse_args()
 
     if not Path(args.file).exists():
@@ -394,7 +443,28 @@ def main():
 
     doc_findings, vale_results = analyze_document(args.file, args.regulation)
 
-    if args.output_format == "json":
+    if args.report:
+        from fincompliance.report import generate_html_report
+
+        data = {
+            "document_findings": [
+                {
+                    "rule": f.rule,
+                    "level": f.level,
+                    "message": f.message,
+                    "regulation": f.regulation,
+                    "citation": f.citation,
+                }
+                for f in doc_findings
+            ],
+            "vale_findings": vale_results,
+        }
+        html = generate_html_report(data, args.report)
+        output_path = Path(args.file).stem + "_gap_report.html"
+        with open(output_path, "w") as f:
+            f.write(html)
+        print(f"Gap report generated: {output_path}")
+    elif args.output_format == "json":
         output = {
             "file": args.file,
             "regulation": args.regulation,
