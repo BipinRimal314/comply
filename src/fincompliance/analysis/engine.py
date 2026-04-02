@@ -371,11 +371,81 @@ class AnalysisEngine:
         """Calculate compliance documentation score (0-100)."""
         return max(0, 100 - (errors * 10) - (warnings * 3) - (suggestions * 1))
 
+    def _detect_document_type(self, content: str) -> dict:
+        """Auto-detect which regulations a document relates to based on content."""
+        content_lower = content.lower()
+        detected = {
+            "bsa-aml": any(term in content_lower for term in [
+                "bank secrecy", "anti-money laundering", "bsa/aml", "bsa ",
+                "suspicious activity", "currency transaction", "customer identification program",
+                "customer due diligence", "fincen", "patriot act", "aml program",
+            ]),
+            "sox": any(term in content_lower for term in [
+                "sarbanes-oxley", "sox ", "internal control over financial reporting",
+                "icfr", "pcaob", "section 302", "section 404", "material weakness",
+            ]),
+            "pci-dss": any(term in content_lower for term in [
+                "pci-dss", "pci dss", "payment card", "cardholder data",
+                "cardholder data environment", "cde", "qualified security assessor",
+            ]),
+            "glba": any(term in content_lower for term in [
+                "gramm-leach-bliley", "glba", "regulation s-p", "nonpublic personal",
+                "privacy notice", "safeguards rule", "16 cfr 313", "16 cfr 314",
+            ]),
+            "udaap": any(term in content_lower for term in [
+                "udaap", "unfair, deceptive", "unfair deceptive", "abusive acts",
+                "consumer protection", "cfpb",
+            ]),
+            "reg-e": any(term in content_lower for term in [
+                "regulation e", "electronic fund transfer", "12 cfr 1005",
+                "unauthorized transfer", "error resolution",
+            ]),
+            "reg-cc": any(term in content_lower for term in [
+                "regulation cc", "funds availability", "12 cfr 229",
+                "deposited funds", "check hold",
+            ]),
+            "reg-dd": any(term in content_lower for term in [
+                "regulation dd", "truth in savings", "12 cfr 1030",
+                "annual percentage yield", "apy",
+            ]),
+            "ncua": any(term in content_lower for term in [
+                "ncua", "credit union", "supervisory committee",
+                "member account verification",
+            ]),
+        }
+        return detected
+
+    def _is_template(self, content: str) -> bool:
+        """Detect if a document is a template (unfilled placeholders)."""
+        content_lower = content.lower()
+        # Strong indicators (any one = template)
+        strong_indicators = [
+            "this template", "this is a template", "sample policy",
+            "model language", "starting point", "[insert ",
+            "[fill in", "[company name]", "[institution name]",
+            "[credit union name]", "[firm name]",
+        ]
+        if any(t in content_lower for t in strong_indicators):
+            return True
+        # Weak indicators (need 2+)
+        weak_indicators = [
+            "[company", "[institution", "(company)", "{company}",
+            "[your ", "(your ", "___", "[name of",
+            "template", "placeholder", "customize",
+        ]
+        indicator_count = sum(1 for t in weak_indicators if t in content_lower)
+        return indicator_count >= 2
+
     def analyze(
         self, file_path: str, regulation: str = "bsa-aml",
     ) -> dict:
         """
         Run full analysis on a document.
+
+        Smart analysis that:
+        - Auto-detects which regulations the document relates to
+        - Only runs relevant checks (BSA checks on BSA documents, etc.)
+        - Detects templates and adjusts severity accordingly
 
         Returns structured result with findings, scores, and metadata.
         """
@@ -389,13 +459,29 @@ class AnalysisEngine:
             vale_path = file_path
 
         all_findings: list[Finding] = []
+        is_template = self._is_template(content)
+        detected_regs = self._detect_document_type(content)
 
         # Document-level checks
-        all_findings.extend(self._check_metadata(content))
+        metadata_findings = self._check_metadata(content)
+        if is_template:
+            # Downgrade metadata errors to suggestions for templates
+            metadata_findings = [
+                Finding(
+                    rule=f.rule, level="suggestion", message=f.message + " (template detected)",
+                    regulation=f.regulation, citation=f.citation,
+                )
+                for f in metadata_findings
+            ]
+        all_findings.extend(metadata_findings)
         all_findings.extend(self._check_structure(content))
 
-        # Regulation-specific checks
-        if regulation in ("bsa-aml", "all"):
+        # Regulation-specific checks — only run if document is relevant
+        should_run_bsa = (
+            regulation in ("bsa-aml", "all")
+            and (regulation == "bsa-aml" or detected_regs.get("bsa-aml", False))
+        )
+        if should_run_bsa:
             all_findings.extend(self._check_bsa_requirements(content))
 
         # Vale linting
@@ -434,6 +520,8 @@ class AnalysisEngine:
             "regulation_coverage": dict(regulation_hits),
             "cfr_citations": citations,
             "cross_references": cross_refs,
+            "detected_regulations": {k: v for k, v in detected_regs.items() if v},
+            "is_template": is_template,
         }
 
     def cross_document_analysis(self, all_findings: list[dict]) -> dict:

@@ -8,7 +8,7 @@
 
 ## 1. Purpose
 
-This policy establishes the Bank Secrecy Act and Anti-Money Laundering compliance program for [Institution Name] in accordance with 31 USC 5311 et seq., the USA PATRIOT Act (Public Law 107-56), and implementing regulations at 31 CFR Chapter X.
+This policy establishes the Bank Secrecy Act and Anti-Money Laundering compliance program for First National Credit Union in accordance with 31 USC 5311 et seq., the USA PATRIOT Act (Public Law 107-56), and implementing regulations at 31 CFR Chapter X.
 
 ## 2. BSA Compliance Program — Five Pillars
 
