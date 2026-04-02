@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fincompliance"
-version = "0.3.0"
+version = "0.4.0"
 description = "Financial compliance documentation linter. Accepts PDF, Word, Markdown. Vale rules + Python CLI for BSA/AML, SOX, PCI-DSS, GLBA, NCUA."
 readme = "README.md"
 license = "MIT"

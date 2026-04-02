@@ -1,0 +1,14 @@
+# SOX — PCAOB AS 1215 amended audit documentation retention.
+# Maximum period for completing documentation changed from 45 days to 14 days
+# following the report release date. Flag any reference to legacy 45-day period.
+extends: existence
+message: "SOX outdated retention period: '%s'. PCAOB AS 1215 reduced completion period from 45 to 14 days following report release. Update to current standard."
+level: error
+ignorecase: true
+tokens:
+  - '45 days following'
+  - '45-day completion'
+  - '45 day completion'
+  - '45 days after the report'
+  - '45 calendar days'
+  - 'within 45 days'

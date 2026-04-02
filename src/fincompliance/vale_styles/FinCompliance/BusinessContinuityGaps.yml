@@ -1,0 +1,18 @@
+# Business Continuity Plans must include specific recovery objectives.
+# RTO and RPO must be defined. Testing must be scheduled.
+extends: existence
+message: "BCP gap: '%s'. Business continuity plans must specify RTO/RPO targets, testing schedule, and recovery procedures."
+level: warning
+ignorecase: true
+tokens:
+  - 'restore operations as quickly as'
+  - 'restore operations promptly'
+  - 'resume operations in a timely'
+  - 'resume business as soon as'
+  - 'recovery time to be determined'
+  - 'BCP will be tested'
+  - 'BCP testing as needed'
+  - 'BCP testing when appropriate'
+  - 'disaster recovery as needed'
+  - 'DR plan to be developed'
+  - 'DR plan under development'

@@ -1,0 +1,16 @@
+# GLBA — Privacy Notice Mandatory Content (16 CFR 313.6)
+# Privacy notices must contain four specific disclosure categories.
+# Vague references to "privacy practices" are insufficient.
+extends: existence
+message: "GLBA privacy notice gap: '%s'. Privacy notices must detail (1) categories of NPI collected, (2) categories disclosed, (3) affiliates/third parties, and (4) protection practices per 16 CFR 313.6."
+level: warning
+ignorecase: true
+tokens:
+  - 'we protect your privacy'
+  - 'we value your privacy'
+  - 'your privacy is important'
+  - 'committed to protecting your privacy'
+  - 'privacy is our priority'
+  - 'we take privacy seriously'
+  - 'see our privacy policy'
+  - 'refer to our privacy policy'

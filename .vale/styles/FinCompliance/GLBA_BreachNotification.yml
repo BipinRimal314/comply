@@ -1,0 +1,16 @@
+# GLBA Safeguards Rule — Breach notification requirements.
+# FTC Safeguards Rule amendment (May 2024) requires notification
+# within 30 days of discovery for breaches affecting 500+ consumers.
+# Per 16 CFR Part 314.
+extends: existence
+message: "GLBA breach notification: '%s'. FTC Safeguards Rule requires notification within 30 days for breaches affecting 500+ consumers (16 CFR 314)."
+level: warning
+ignorecase: true
+tokens:
+  - 'notify affected individuals'
+  - 'breach notification will be'
+  - 'notify customers of breach'
+  - 'breach notification as required'
+  - 'in the event of a breach'
+  - 'data breach notification'
+  - 'security incident notification'

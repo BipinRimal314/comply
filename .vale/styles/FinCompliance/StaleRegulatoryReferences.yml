@@ -1,0 +1,18 @@
+# Flag references to superseded or outdated regulatory standards.
+# Documents citing old versions indicate they haven't been updated.
+extends: existence
+message: "Outdated regulatory reference: '%s'. This standard has been superseded. Update to current version."
+level: error
+ignorecase: true
+tokens:
+  - 'PCI-DSS v3.2'
+  - 'PCI DSS v3.2'
+  - 'PCI-DSS version 3'
+  - 'PCI DSS version 3'
+  - 'PCI-DSS 3.2.1'
+  - 'Basel II'
+  - 'FFIEC 2014 Cybersecurity'
+  - 'NIST SP 800-53 Rev 4'
+  - 'NIST SP 800-53 Revision 4'
+  - 'ISO 27001:2013'
+  - 'SOC 1 Type 1'

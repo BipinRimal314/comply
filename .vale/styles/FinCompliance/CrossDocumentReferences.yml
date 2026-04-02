@@ -1,0 +1,19 @@
+# Cross-document references should be specific and verifiable.
+# Vague references to other documents create broken links during audits.
+extends: existence
+message: "Vague cross-reference: '%s'. Specify exact document name and section number (e.g., 'BSA/AML Procedures Manual, Section 4.2')."
+level: suggestion
+ignorecase: true
+tokens:
+  - 'see related policy'
+  - 'see related procedure'
+  - 'refer to related'
+  - 'as outlined in our other'
+  - 'per our other policy'
+  - 'per our other procedure'
+  - 'see applicable policy'
+  - 'refer to applicable'
+  - 'as described elsewhere'
+  - 'as documented separately'
+  - 'see companion document'
+  - 'refer to companion'

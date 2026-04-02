@@ -1,0 +1,16 @@
+# PCI-DSS v4.0.1 — Media destruction requirements.
+# Physical media containing cardholder data must be cross-shredded,
+# incinerated, or pulped. Simple shredding is insufficient.
+# Per Requirement 9.4.6.
+extends: existence
+message: "PCI media destruction: '%s'. PCI-DSS requires cross-cut shredding, incineration, or pulping for cardholder data media (Req 9.4.6)."
+level: warning
+ignorecase: true
+tokens:
+  - 'shred documents'
+  - 'shred papers'
+  - 'paper shredder'
+  - 'shredding of documents'
+  - 'strip-cut shredder'
+  - 'strip-cut shredding'
+  - 'strip shredder'

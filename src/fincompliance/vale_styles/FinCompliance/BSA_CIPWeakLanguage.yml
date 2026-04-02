@@ -1,0 +1,21 @@
+# BSA/AML — CIP language must be mandatory, not aspirational.
+# Examiners flag CIP policies using "should" instead of "must" for
+# the four required data points (31 CFR 1020.220).
+extends: existence
+message: "CIP weak language: '%s'. CIP requirements are mandatory. Use 'must collect' or 'shall collect' — not aspirational language."
+level: error
+ignorecase: true
+tokens:
+  - 'should attempt to collect'
+  - 'should try to collect'
+  - 'should obtain'
+  - 'will attempt to verify'
+  - 'should attempt to verify'
+  - 'will endeavor to collect'
+  - 'will try to obtain'
+  - 'may collect'
+  - 'may attempt to verify'
+  - 'where possible, collect'
+  - 'when feasible, verify'
+  - 'reasonable efforts to collect'
+  - 'reasonable efforts to verify'

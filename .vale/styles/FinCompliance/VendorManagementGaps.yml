@@ -1,0 +1,16 @@
+# Vendor management documentation must include specific due diligence elements.
+# OCC Bulletin 2013-29 and NCUA guidance require documented vendor oversight.
+extends: existence
+message: "Vendor management concern: '%s'. Vendor policies must include specific due diligence criteria, not vague commitments."
+level: warning
+ignorecase: true
+tokens:
+  - 'vendors will be reviewed'
+  - 'vendor review as needed'
+  - 'vendor due diligence as appropriate'
+  - 'vendors assessed periodically'
+  - 'vendor risk assessed as needed'
+  - 'third-party review when necessary'
+  - 'vendor management to be established'
+  - 'vendor oversight to be determined'
+  - 'appropriate vendor oversight'

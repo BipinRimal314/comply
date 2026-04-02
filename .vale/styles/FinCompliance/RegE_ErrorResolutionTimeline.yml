@@ -1,0 +1,18 @@
+# Regulation E — Error resolution investigation timelines.
+# Per 12 CFR 1005.11: 10 business days to investigate (20 for new accounts),
+# provisional credit within 10 business days, 45 calendar days to resolve
+# (90 days for POS/foreign/new account transactions).
+# Vague timing language is an examiner finding.
+extends: existence
+message: "Reg E timeline concern: '%s'. Specify exact investigation deadlines: 10 business days initial, 45 calendar days resolution per 12 CFR 1005.11."
+level: warning
+ignorecase: true
+tokens:
+  - 'investigate promptly'
+  - 'investigate in a timely'
+  - 'complete investigation promptly'
+  - 'resolve errors promptly'
+  - 'resolve errors in a timely'
+  - 'provisional credit will be'
+  - 'provisional credit may be'
+  - 'temporary credit at our discretion'

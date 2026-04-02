@@ -1,0 +1,16 @@
+# GLBA — Opt-Out notice must provide "reasonable means" to exercise.
+# Per 16 CFR 313.7, opt-out must include toll-free number or web portal.
+# Vague opt-out language is an FTC enforcement target.
+extends: existence
+message: "GLBA opt-out concern: '%s'. Opt-out notices must provide specific, reasonable means (toll-free number or web portal) per 16 CFR 313.7."
+level: warning
+ignorecase: true
+tokens:
+  - 'contact us to opt out'
+  - 'write to us to opt out'
+  - 'send a letter to opt'
+  - 'mail your opt-out request'
+  - 'opt out by writing'
+  - 'opt out by mail'
+  - 'opt out by contacting'
+  - 'notify us in writing to opt'

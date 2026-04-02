@@ -1,0 +1,17 @@
+# BSA/AML — SAR filing timelines must reference exact regulatory deadlines.
+# Per 31 CFR 1020.320: 30 calendar days from detection,
+# 60 days if no suspect identified. Vague timing is an examiner finding.
+extends: existence
+message: "SAR timeline concern: '%s'. SAR filing must specify exact deadlines: 30 calendar days from detection, 60 days if no suspect (31 CFR 1020.320)."
+level: warning
+ignorecase: true
+tokens:
+  - 'file SAR promptly'
+  - 'file SAR in a timely'
+  - 'file SAR as soon as'
+  - 'timely SAR filing'
+  - 'SAR filed promptly'
+  - 'report suspicious activity promptly'
+  - 'report suspicious activity in a timely'
+  - 'file within a reasonable'
+  - 'promptly file a suspicious'

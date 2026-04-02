@@ -1,0 +1,18 @@
+# Incident response plans must include specific operational details.
+# Vague incident response language fails examiner and auditor scrutiny.
+extends: existence
+message: "Incident response gap: '%s'. IR plans must specify exact notification timelines, escalation paths, and responsible parties."
+level: warning
+ignorecase: true
+tokens:
+  - 'respond to incidents promptly'
+  - 'respond to incidents in a timely'
+  - 'incident response as appropriate'
+  - 'escalate incidents as needed'
+  - 'escalate as appropriate'
+  - 'notify appropriate parties'
+  - 'notify relevant personnel'
+  - 'incident response plan will be developed'
+  - 'IR plan under development'
+  - 'incident response to be determined'
+  - 'activate incident response when necessary'

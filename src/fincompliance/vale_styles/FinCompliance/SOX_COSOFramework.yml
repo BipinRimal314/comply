@@ -1,0 +1,13 @@
+# SOX — Control documentation must reference the control framework used.
+# PCAOB AS 2201 requires identification of the specific framework
+# (e.g., COSO, COBIT). Missing framework reference is an audit finding.
+extends: existence
+message: "SOX framework reference: '%s'. Ensure documentation identifies the specific control framework (COSO, COBIT) per PCAOB AS 2201."
+level: warning
+ignorecase: true
+tokens:
+  - 'internal control framework'
+  - 'control framework'
+  - 'ICFR framework'
+  - 'control environment'
+  - 'control activities'

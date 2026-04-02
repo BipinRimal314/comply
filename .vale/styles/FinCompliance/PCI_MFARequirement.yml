@@ -1,0 +1,19 @@
+# PCI-DSS v4.0.1 — MFA required for all CDE access.
+# Policies that reference single-factor auth for CDE access
+# are non-compliant. Per Requirement 8.4.
+extends: existence
+message: "PCI MFA concern: '%s'. PCI-DSS v4.0.1 requires MFA for all access to the Cardholder Data Environment (Req 8.4)."
+level: error
+ignorecase: true
+tokens:
+  - 'password only access to'
+  - 'single factor authentication'
+  - 'single-factor authentication'
+  - 'password-only authentication'
+  - 'password only for CDE'
+  - 'username and password for CDE'
+  - 'MFA is optional'
+  - 'MFA may be required'
+  - 'MFA when feasible'
+  - 'MFA where possible'
+  - 'MFA is recommended'

@@ -1,0 +1,14 @@
+# BSA/AML — BSA Officer must be described with "sufficient authority."
+# FFIEC manual requires the BSA Officer have adequate authority,
+# resources, and direct board access.
+extends: existence
+message: "BSA Officer designation: '%s'. Ensure BSA Officer description includes sufficient authority, adequate resources, and direct board reporting per FFIEC manual."
+level: warning
+ignorecase: true
+tokens:
+  - 'BSA officer will be appointed'
+  - 'BSA officer has been designated'
+  - 'designate a BSA officer'
+  - 'appointed as BSA officer'
+  - 'serves as BSA officer'
+  - 'named as BSA compliance'

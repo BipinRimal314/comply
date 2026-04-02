@@ -1,0 +1,18 @@
+# PCI-DSS v4.0.1 — Critical vulnerability patching timeline.
+# Critical and high security patches must be installed within
+# a defined timeframe (historically 30 days, now risk-based per v4.0).
+# Vague patching language is a QSA finding.
+# Per PCI-DSS v4.0.1 Requirement 6.3.3.
+extends: existence
+message: "PCI patching concern: '%s'. Define specific patching timelines for critical/high vulnerabilities (Req 6.3.3)."
+level: warning
+ignorecase: true
+tokens:
+  - 'patches applied regularly'
+  - 'patches applied periodically'
+  - 'patches installed as needed'
+  - 'patches applied in a timely'
+  - 'patching on a regular basis'
+  - 'patch when possible'
+  - 'patch as soon as practicable'
+  - 'patches applied as available'

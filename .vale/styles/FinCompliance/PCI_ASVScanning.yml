@@ -1,0 +1,16 @@
+# PCI-DSS v4.0.1 — External vulnerability scanning requirements.
+# Quarterly external scans must be performed by an Approved Scanning
+# Vendor (ASV). Internal-only scanning is insufficient.
+# Per Requirement 11.3.2.
+extends: existence
+message: "PCI scanning concern: '%s'. PCI-DSS requires quarterly external scans by an Approved Scanning Vendor (ASV) per Req 11.3.2."
+level: warning
+ignorecase: true
+tokens:
+  - 'internal scans only'
+  - 'internal vulnerability scans'
+  - 'scanned internally'
+  - 'internal scanning only'
+  - 'self-assessed vulnerability'
+  - 'we scan our own'
+  - 'in-house vulnerability scanning'

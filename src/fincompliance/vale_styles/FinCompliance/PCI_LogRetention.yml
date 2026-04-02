@@ -1,0 +1,18 @@
+# PCI-DSS v4.0.1 — Audit log retention requirements.
+# Logs must be retained for at least 12 months with
+# at least 3 months immediately available for analysis.
+# Per PCI-DSS v4.0.1 Requirement 10.7.
+extends: existence
+message: "PCI log retention concern: '%s'. PCI-DSS v4.0.1 requires 12-month log retention with 3 months immediately available (Req 10.7)."
+level: warning
+ignorecase: true
+tokens:
+  - 'retain logs for 90 days'
+  - 'retain logs for 3 months'
+  - 'retain logs for 6 months'
+  - 'log retention of 90'
+  - 'log retention of 3 months'
+  - 'log retention of 6 months'
+  - 'logs retained for 90'
+  - 'logs stored for three months'
+  - 'logs stored for six months'

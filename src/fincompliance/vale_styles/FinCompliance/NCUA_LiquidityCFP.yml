@@ -1,0 +1,18 @@
+# NCUA — Contingency Funding Plans must be actionable, not theoretical.
+# 2025-2026 NCUA supervisory priorities emphasize liquidity risk.
+# CFPs must document stress testing scenarios, available funding sources,
+# and executable actions. Vague language is a finding.
+extends: existence
+message: "NCUA CFP concern: '%s'. Contingency Funding Plans must include specific stress scenarios, funding sources, and executable actions per NCUA 2025-2026 priorities."
+level: warning
+ignorecase: true
+tokens:
+  - 'will explore funding options'
+  - 'will seek additional funding'
+  - 'will consider alternative'
+  - 'may access funding'
+  - 'will evaluate liquidity'
+  - 'liquidity plan will be developed'
+  - 'contingency plan under development'
+  - 'liquidity sources to be determined'
+  - 'funding sources TBD'

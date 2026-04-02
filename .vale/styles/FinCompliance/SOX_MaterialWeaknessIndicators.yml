@@ -1,0 +1,20 @@
+# SOX — Material weakness indicators that must be documented and escalated.
+# Per PCAOB AS 2201.69, these circumstances constitute strong indicators
+# and must appear in audit committee and ICFR documentation.
+extends: existence
+message: "SOX material weakness indicator: '%s'. Per AS 2201.69, document and escalate this to the audit committee."
+level: warning
+ignorecase: true
+tokens:
+  - 'fraud by senior management'
+  - 'fraud by management'
+  - 'management fraud'
+  - 'restatement of previously issued'
+  - 'restatement of financial'
+  - 'restatement required'
+  - 'ineffective audit committee'
+  - 'ineffective oversight by'
+  - 'override of internal controls'
+  - 'management override of'
+  - 'material misstatement'
+  - 'material error in'
