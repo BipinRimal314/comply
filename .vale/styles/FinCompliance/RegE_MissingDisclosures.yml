@@ -1,0 +1,16 @@
+# Regulation E — Required Initial Disclosure Elements (12 CFR 1005.7)
+# EFT initial disclosures must include specific content.
+# These terms indicate incomplete or missing required elements.
+extends: existence
+message: "Reg E disclosure concern: '%s'. Ensure EFT disclosures address all elements required by 12 CFR 1005.7."
+level: warning
+ignorecase: true
+tokens:
+  - 'error resolution procedures will be provided'
+  - 'error resolution procedures are available upon request'
+  - 'contact us for error resolution'
+  - 'see separate disclosure'
+  - 'refer to separate document'
+  - 'details provided at account opening'
+  - 'see terms and conditions'
+  - 'refer to your account agreement'

@@ -1,0 +1,17 @@
+# Regulation CC — Flag any reference to pre-July 2025 dollar amounts
+# in funds availability disclosures. These are the most common
+# examiner findings in Reg CC compliance reviews.
+extends: substitution
+message: "Reg CC outdated amount: '%s' should be updated to '%s' per July 2025 inflation adjustment (12 CFR 229)."
+level: error
+ignorecase: false
+swap:
+  "$200 on the next": "$225 on the next"
+  "$200 of the deposit": "$225 of the deposit"
+  "$200 must be": "$225 must be"
+  "$200 available": "$225 available"
+  "$200 shall be": "$225 shall be"
+  "$5,000 deposit": "$5,525 deposit"
+  "$5,000 or more": "$5,525 or more"
+  "$5,000 threshold": "$5,525 threshold"
+  "$5,000 exception": "$5,525 exception"

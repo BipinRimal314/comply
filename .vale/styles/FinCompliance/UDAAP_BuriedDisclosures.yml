@@ -1,0 +1,26 @@
+# UDAAP — Buried Disclosures and Comprehension Interference
+# CFPB Policy Statement on Abusiveness targets "buried disclosures"
+# using fine print, complex legal jargon, or convoluted sentence structures.
+# Flesch-Kincaid readability enforcement for consumer-facing documents.
+extends: existence
+message: "UDAAP buried disclosure risk: '%s'. CFPB targets language that interferes with consumer comprehension. Simplify."
+level: warning
+ignorecase: true
+tokens:
+  - 'notwithstanding the foregoing'
+  - 'notwithstanding anything'
+  - 'subject to the provisions herein'
+  - 'in accordance with the terms and conditions set forth herein'
+  - 'pursuant to the provisions of'
+  - 'the foregoing notwithstanding'
+  - 'without limiting the generality'
+  - 'to the fullest extent permitted by law'
+  - 'except as otherwise provided herein'
+  - 'as more fully described in'
+  - 'including but not limited to'
+  - 'including without limitation'
+  - 'shall be deemed to'
+  - 'hereby acknowledges and agrees'
+  - 'irrevocably and unconditionally'
+  - 'waives any and all'
+  - 'to the maximum extent permissible'

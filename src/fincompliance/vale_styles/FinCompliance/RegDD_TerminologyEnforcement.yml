@@ -1,0 +1,17 @@
+# Regulation DD — Truth in Savings (12 CFR 1030)
+# Requires use of exact statutory terminology.
+# "Annual Percentage Yield" (APY) must be used — not APR or variations.
+# Fee schedules must explain conditions, not just amounts.
+extends: substitution
+message: "Reg DD terminology: '%s' must be '%s' in deposit account disclosures (12 CFR 1030)."
+level: error
+ignorecase: true
+swap:
+  "annual percentage rate on deposits": "Annual Percentage Yield (APY)"
+  "APR on your deposit": "Annual Percentage Yield (APY)"
+  "APR on your savings": "Annual Percentage Yield (APY)"
+  "interest rate on deposits": "Annual Percentage Yield (APY) and interest rate"
+  "annual interest rate on savings": "Annual Percentage Yield (APY) and interest rate"
+  "rate of return on deposits": "Annual Percentage Yield (APY)"
+  "yearly percentage": "Annual Percentage Yield (APY)"
+  "annual yield": "Annual Percentage Yield (APY)"

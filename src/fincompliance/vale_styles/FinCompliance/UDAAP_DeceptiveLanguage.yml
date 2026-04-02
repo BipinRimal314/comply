@@ -1,0 +1,36 @@
+# UDAAP — Unfair, Deceptive, or Abusive Acts or Practices
+# CFPB aggressively enforces on imprecise conditional statements
+# that obscure true costs in consumer-facing documents.
+# Per Dodd-Frank Act Section 1031, 12 USC 5531.
+extends: existence
+message: "UDAAP risk: '%s'. CFPB flags imprecise conditional language that obscures costs or terms. Provide exact figures and conditions."
+level: error
+ignorecase: true
+tokens:
+  - 'may be larger'
+  - 'may be higher'
+  - 'may be lower'
+  - 'may increase'
+  - 'may decrease'
+  - 'may vary'
+  - 'may change'
+  - 'may apply'
+  - 'subject to change without notice'
+  - 'subject to change'
+  - 'estimated at'
+  - 'estimated to be'
+  - 'approximately equal to'
+  - 'rates may fluctuate'
+  - 'fees may apply'
+  - 'additional fees may'
+  - 'charges may apply'
+  - 'payment may differ'
+  - 'payment could be'
+  - 'your actual payment'
+  - 'results may vary'
+  - 'terms and conditions may'
+  - 'we reserve the right to change'
+  - 'we reserve the right to modify'
+  - 'at our sole discretion'
+  - 'without prior notice'
+  - 'pricing subject to'

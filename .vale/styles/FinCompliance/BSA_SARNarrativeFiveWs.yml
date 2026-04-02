@@ -1,0 +1,14 @@
+# BSA/AML — SAR Narrative Quality (FFIEC Appendix L)
+# FinCEN requires SAR narratives to address the "Five Ws":
+# Who, What, When, Where, Why.
+# SAR drafting procedures must mandate this framework.
+extends: existence
+message: "SAR narrative weakness: '%s'. FinCEN and FFIEC Appendix L require SAR narratives to address the Five Ws (Who, What, When, Where, Why). Ensure procedures mandate this framework."
+level: warning
+ignorecase: true
+tokens:
+  - 'brief description of activity'
+  - 'summary of suspicious activity'
+  - 'describe the activity'
+  - 'narrative should include'
+  - 'narrative must include'

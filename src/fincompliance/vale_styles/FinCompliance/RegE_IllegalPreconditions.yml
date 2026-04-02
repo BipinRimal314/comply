@@ -1,0 +1,27 @@
+# Regulation E — Electronic Fund Transfers (12 CFR 1005)
+# Examiners flag illegal preconditions for error resolution investigations.
+# Institutions cannot require police reports, notarized affidavits,
+# or in-person visits as conditions for initiating investigations.
+# Per 12 CFR 1005.11 and CFPB examination procedures.
+extends: existence
+message: "Reg E illegal precondition: '%s'. Institutions cannot require this as a condition for error resolution investigation (12 CFR 1005.11). Remove or rephrase as optional."
+level: error
+ignorecase: true
+tokens:
+  - 'must file a police report'
+  - 'required to file a police report'
+  - 'must provide a police report'
+  - 'police report required'
+  - 'police report is required'
+  - 'notarized affidavit'
+  - 'must submit an affidavit'
+  - 'affidavit required'
+  - 'affidavit is required'
+  - 'must visit a branch'
+  - 'required to visit a branch'
+  - 'must come to a branch'
+  - 'in-person visit required'
+  - 'in person visit required'
+  - 'must appear in person'
+  - 'written statement required before'
+  - 'must provide written notice before'

@@ -1,0 +1,25 @@
+# UDAAP — Deceptive Transfer Speed Claims
+# CFPB cites absolute temporal claims in remittance/transfer marketing
+# as deceptive when actual settlement differs.
+# Per CFPB Supervisory Report on Financial Institution Practices.
+extends: existence
+message: "UDAAP deceptive speed claim: '%s'. CFPB flags absolute temporal claims when actual processing times differ. Add disclaimers or use accurate language."
+level: warning
+ignorecase: true
+tokens:
+  - 'instant transfer'
+  - 'instant deposit'
+  - 'instant payment'
+  - 'instant access'
+  - 'immediate transfer'
+  - 'immediate access to funds'
+  - 'real-time transfer'
+  - 'real-time payment'
+  - 'same-day guarantee'
+  - 'guaranteed same-day'
+  - '30-second transfer'
+  - 'money in seconds'
+  - 'funds available immediately'
+  - 'instantly available'
+  - 'zero wait time'
+  - 'no waiting period'

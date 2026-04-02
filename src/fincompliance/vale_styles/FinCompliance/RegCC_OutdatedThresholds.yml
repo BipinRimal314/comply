@@ -1,0 +1,13 @@
+# Regulation CC — Expedited Funds Availability (12 CFR 229)
+# Thresholds changed July 1, 2025 per inflation adjustment.
+# Old: $200 next-day / $5,000 large deposit / $5,000 repeatedly overdrawn
+# New: $225 next-day / $5,525 large deposit / $5,525 repeatedly overdrawn
+# Any document still referencing old amounts is immediately non-compliant.
+extends: existence
+message: "Reg CC outdated threshold: '%s'. Regulation CC thresholds changed July 1, 2025. Update to current amounts ($225 next-day, $5,525 large deposit). Per 12 CFR 229."
+level: error
+ignorecase: true
+raw:
+  - '\$200(?:\s|\.|\,|\b)(?=.*(?:available|availability|next business day|deposited funds|fund|check))'
+  - '\$5,000(?:\s|\.|\,|\b)(?=.*(?:large deposit|deposit hold|repeatedly overdrawn|overdrawn account|exception hold))'
+  - '\$5,000 or more'
