@@ -1,9 +1,8 @@
-# BSA/AML — Beneficial Ownership and Foreign Shell Banks (31 CFR 1010.230)
-# CDD rule requires documentation of beneficial ownership for legal entities.
-# The 25% ownership threshold must be explicitly stated.
-# Foreign shell bank prohibition must be addressed.
+# BSA/AML — Beneficial Ownership weak language (31 CFR 1010.230)
+# CDD rule requires explicit, mandatory language about beneficial ownership.
+# Flag vague or aspirational language around CDD requirements.
 extends: existence
-message: "BSA beneficial ownership concern: '%s'. Ensure CDD documentation explicitly addresses beneficial ownership thresholds and foreign shell bank prohibitions per 31 CFR 1010.230."
+message: "BSA beneficial ownership: '%s'. CDD beneficial ownership requirements are mandatory. Use specific, mandatory language per 31 CFR 1010.230."
 level: warning
 ignorecase: true
 tokens:
@@ -11,6 +10,7 @@ tokens:
   - 'beneficial ownership as required'
   - 'ownership information as applicable'
   - 'collect ownership information when'
-  - 'shell bank'
-  - 'foreign shell'
-  - 'correspondent account'
+  - 'beneficial ownership where required'
+  - 'may collect beneficial ownership'
+  - 'should collect beneficial ownership'
+  - 'beneficial ownership if applicable'
