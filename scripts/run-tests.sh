@@ -33,7 +33,7 @@ echo ""
 
 # ── Test 1: Good BSA policy should have 0 errors ──
 echo "Test 1: Good BSA policy (0 errors expected)"
-ERRORS=$(python3 scripts/comply.py examples/sample-bsa-policy.md --format json 2>/dev/null | python3 -c "
+ERRORS=$(PYTHONPATH=src python3 src/fincompliance/cli.py examples/sample-bsa-policy.md --format json 2>/dev/null | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
 errors = sum(1 for f in data.get('document_findings', []) if f['level'] == 'error')
@@ -50,7 +50,7 @@ fi
 
 # ── Test 2: Weak BSA policy should have errors ──
 echo "Test 2: Weak BSA policy (errors expected)"
-ERRORS=$(python3 scripts/comply.py tests/fail/weak-bsa-policy.md --format json 2>/dev/null | python3 -c "
+ERRORS=$(PYTHONPATH=src python3 src/fincompliance/cli.py tests/fail/weak-bsa-policy.md --format json 2>/dev/null | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
 errors = sum(1 for f in data.get('document_findings', []) if f['level'] == 'error')
@@ -67,7 +67,7 @@ fi
 
 # ── Test 3: Weak BSA missing metadata ──
 echo "Test 3: Missing metadata detection"
-METADATA_ERRORS=$(python3 scripts/comply.py tests/fail/weak-bsa-policy.md --format json 2>/dev/null | python3 -c "
+METADATA_ERRORS=$(PYTHONPATH=src python3 src/fincompliance/cli.py tests/fail/weak-bsa-policy.md --format json 2>/dev/null | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
 count = sum(1 for f in data.get('document_findings', []) if f['rule'] == 'DocumentMetadata')
@@ -81,7 +81,7 @@ fi
 
 # ── Test 4: Weak BSA missing pillars ──
 echo "Test 4: Missing BSA pillars detection"
-PILLAR_ERRORS=$(python3 scripts/comply.py tests/fail/weak-bsa-policy.md --format json 2>/dev/null | python3 -c "
+PILLAR_ERRORS=$(PYTHONPATH=src python3 src/fincompliance/cli.py tests/fail/weak-bsa-policy.md --format json 2>/dev/null | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
 count = sum(1 for f in data.get('document_findings', []) if f['rule'] == 'BSA_FivePillars')
@@ -127,7 +127,7 @@ fi
 
 # ── Test 7: JSON output format works ──
 echo "Test 7: JSON output format"
-JSON_VALID=$(python3 scripts/comply.py examples/sample-bsa-policy.md --format json 2>/dev/null | python3 -c "
+JSON_VALID=$(PYTHONPATH=src python3 src/fincompliance/cli.py examples/sample-bsa-policy.md --format json 2>/dev/null | python3 -c "
 import json, sys
 try:
     data = json.load(sys.stdin)
