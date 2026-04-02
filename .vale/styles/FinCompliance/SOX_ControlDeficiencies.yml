@@ -1,0 +1,18 @@
+# SOX compliance documents must not contain language suggesting
+# unresolved control deficiencies. Per SOX Section 302/404.
+extends: existence
+message: "SOX red flag: '%s'. Unresolved control deficiencies must be remediated and documented, not acknowledged and deferred."
+level: error
+ignorecase: true
+tokens:
+  - 'control deficiency identified'
+  - 'material weakness identified'
+  - 'significant deficiency identified'
+  - 'compensating control not yet'
+  - 'override of controls'
+  - 'management override'
+  - 'segregation of duties not enforced'
+  - 'no compensating control'
+  - 'control gap identified'
+  - 'remediation not complete'
+  - 'workaround in place'

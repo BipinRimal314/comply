@@ -37,12 +37,12 @@ vale --config=.vale.ini path/to/your/bsa-policy.md
 
 | Regulation | Rules | Status |
 |---|---|---|
-| **BSA/AML** (Bank Secrecy Act / Anti-Money Laundering) | 8 rules | Available |
-| **Common** (cross-regulation) | 6 rules | Available |
-| SOX (Sarbanes-Oxley) | — | Planned |
-| PCI-DSS (Payment Card Industry) | — | Planned |
-| GLBA (Gramm-Leach-Bliley) | — | Planned |
-| NCUA (Credit Union specific) | — | Planned |
+| **Common** (cross-regulation) | 11 rules | Available |
+| **BSA/AML** (Bank Secrecy Act / Anti-Money Laundering) | 2 rules + CLI checks | Available |
+| **SOX** (Sarbanes-Oxley) | 2 rules | Available |
+| **PCI-DSS** (Payment Card Industry) | 2 rules | Available |
+| **GLBA** (Gramm-Leach-Bliley) | 1 rule | Available |
+| **NCUA** (Credit Union specific) | 1 rule | Available |
 
 ## Example Output
 

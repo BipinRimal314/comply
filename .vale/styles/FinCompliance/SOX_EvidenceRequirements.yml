@@ -1,0 +1,17 @@
+# SOX documentation must reference specific evidence and testing.
+# Assertions without evidence are audit findings.
+extends: existence
+message: "Unsupported assertion: '%s'. SOX controls must reference specific evidence (test results, screenshots, logs)."
+level: warning
+ignorecase: true
+tokens:
+  - 'controls are effective'
+  - 'controls are adequate'
+  - 'controls are sufficient'
+  - 'controls are in place'
+  - 'controls are operating'
+  - 'no exceptions noted'
+  - 'no issues identified'
+  - 'all controls passed'
+  - 'testing confirmed'
+  - 'audit confirmed'

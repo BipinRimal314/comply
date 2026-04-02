@@ -1,0 +1,25 @@
+# PCI-DSS requires strong encryption for cardholder data.
+# Documentation should not reference weak or deprecated encryption.
+# Per PCI-DSS v4.0 Requirements 3.5, 4.2.
+extends: existence
+message: "Weak encryption reference: '%s'. PCI-DSS requires strong cryptography (AES-256, TLS 1.2+). Update encryption standards."
+level: error
+ignorecase: true
+tokens:
+  - 'DES encryption'
+  - '3DES'
+  - 'Triple DES'
+  - 'RC4'
+  - 'MD5'
+  - 'SHA-1'
+  - 'SHA1'
+  - 'SSL 3'
+  - 'SSLv3'
+  - 'TLS 1.0'
+  - 'TLS 1.1'
+  - 'WEP'
+  - 'plaintext transmission'
+  - 'unencrypted transmission'
+  - 'FTP'
+  - 'telnet'
+  - 'HTTP '

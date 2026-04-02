@@ -1,0 +1,17 @@
+# GLBA privacy notices must contain specific required elements.
+# Per 16 CFR Part 313 (Regulation S-P).
+# These phrases suggest incomplete privacy documentation.
+extends: existence
+message: "GLBA privacy concern: '%s'. Privacy notices must clearly describe information sharing practices per Reg S-P."
+level: warning
+ignorecase: true
+tokens:
+  - 'may share your information'
+  - 'we reserve the right to share'
+  - 'information may be disclosed'
+  - 'at our discretion'
+  - 'third parties as we see fit'
+  - 'share with affiliates without'
+  - 'opt-out not available'
+  - 'cannot opt out'
+  - 'no opt-out'
