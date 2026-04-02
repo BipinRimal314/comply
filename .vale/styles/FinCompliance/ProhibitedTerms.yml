@@ -1,7 +1,7 @@
 # Compliance documents must use precise regulatory language.
 # Vague or informal terms create legal ambiguity during examinations.
 extends: substitution
-message: "Avoid '%s'. Use '%s' instead for regulatory precision."
+message: "Use '%s' instead of '%s' for regulatory precision."
 level: warning
 ignorecase: true
 swap:

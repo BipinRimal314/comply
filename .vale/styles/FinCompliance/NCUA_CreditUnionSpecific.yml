@@ -1,7 +1,7 @@
 # Credit union specific compliance language checks.
 # NCUA examinations look for credit union-appropriate terminology.
 extends: substitution
-message: "Credit union terminology: '%s' should be '%s' in credit union documents."
+message: "Credit union terminology: Use '%s' instead of '%s' in credit union documents."
 level: suggestion
 ignorecase: true
 swap:
