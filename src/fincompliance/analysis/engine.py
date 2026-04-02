@@ -213,9 +213,14 @@ class AnalysisEngine:
                 ))
         return findings
 
-    def _check_metadata(self, content: str) -> list[Finding]:
-        """Check required document metadata."""
+    def _check_metadata(self, content: str, strict: bool = False) -> list[Finding]:
+        """Check required document metadata.
+
+        In strict mode (live policy audit): missing metadata = error.
+        In default mode: missing metadata = warning.
+        """
         findings = []
+        level = "error" if strict else "warning"
         required = {
             "Effective Date": "All compliance documents must include an effective date",
             "Last Reviewed": "Examiners check that policies are reviewed regularly",
@@ -228,7 +233,7 @@ class AnalysisEngine:
             if field.lower() not in content_lower:
                 findings.append(Finding(
                     rule="DocumentMetadata",
-                    level="error",
+                    level=level,
                     message=f"Missing required metadata: '{field}'. {reason}.",
                     regulation="common",
                 ))
@@ -437,7 +442,7 @@ class AnalysisEngine:
         return indicator_count >= 2
 
     def analyze(
-        self, file_path: str, regulation: str = "bsa-aml",
+        self, file_path: str, regulation: str = "bsa-aml", strict: bool = False,
     ) -> dict:
         """
         Run full analysis on a document.
@@ -446,6 +451,10 @@ class AnalysisEngine:
         - Auto-detects which regulations the document relates to
         - Only runs relevant checks (BSA checks on BSA documents, etc.)
         - Detects templates and adjusts severity accordingly
+
+        Args:
+            strict: If True, treat metadata checks as errors (for live policy audits).
+                    If False, treat as warnings (for templates/general review).
 
         Returns structured result with findings, scores, and metadata.
         """
@@ -463,7 +472,7 @@ class AnalysisEngine:
         detected_regs = self._detect_document_type(content)
 
         # Document-level checks
-        metadata_findings = self._check_metadata(content)
+        metadata_findings = self._check_metadata(content, strict=strict)
         if is_template:
             # Downgrade metadata errors to suggestions for templates
             metadata_findings = [
