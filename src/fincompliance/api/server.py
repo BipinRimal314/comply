@@ -18,6 +18,7 @@ from pathlib import Path
 from fastapi import FastAPI, File, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from fincompliance import __version__
 from fincompliance.analysis.engine import AnalysisEngine
@@ -285,3 +286,11 @@ async def batch_analyze(
         "cross_document_analysis": cross_doc,
         "findings": all_findings,
     }
+
+
+# Serve web dashboard if built
+_web_dist = Path(__file__).parent.parent.parent.parent / "web" / "dist"
+if not _web_dist.exists():
+    _web_dist = Path(__file__).parent.parent / "web" / "dist"
+if _web_dist.exists():
+    app.mount("/", StaticFiles(directory=str(_web_dist), html=True), name="web")
